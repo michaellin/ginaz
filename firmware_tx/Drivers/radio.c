@@ -111,7 +111,7 @@ void   radio_isr(){
 	//TX Done Interrupt
 	
 	//Declare packet
-uint8_t IMU_values[24] = {0, 0, 0,0, 0, 0,0, 0, 0,0, 0, 0,0, 0, 0,0, 0, 0,0, 0, 0,0, 0, 0,};
+  uint8_t IMU_values[24] = {0, 0, 0,0, 0, 0,0, 0, 0,0, 0, 0,0, 0, 0,0, 0, 0,0, 0, 0,0, 0, 0,};
 	
 	//Prepare packet index
 	pktindex++;

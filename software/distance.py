@@ -81,14 +81,14 @@ if __name__=="__main__":
 	plat_arrow = arrow(color=color.green,axis=(1,0,0), shaftwidth=0.06, fixedwidth=1)
 
 	#initialize motetalk/serial port stuff
-	sport = "COM5" #raw_input('port \n')
+	sport = "/dev/tty.usbmodemfa131" #raw_input('port \n')
 	chan = "15" #raw_input('Channel to sniff \n')
 	#filename = raw_input('Log file to write to \n')
 	filename = "testroll"
 	log = open(filename + ".txt", 'w')
 	#log2 = open(filename + "2.txt", 'w')
 	
-	m = motetalk.motetalk("xH","n",sport,None)
+	m = motetalk.motetalk(sport=sport,brate=115200)
 	startup(m)
 	
 	sys.stderr.write( "Sniffing...\n")

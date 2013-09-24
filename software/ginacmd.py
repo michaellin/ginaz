@@ -1,5 +1,7 @@
 #!/usr/bin/python
 
+"Parser for command.c"
+
 import sys, re, getopt, os
 
 p_def = re.compile('^[\t ]*#([\t ]*)define[\t ]+CMD_([a-zA-Z0-9_]+)[\t ]+')

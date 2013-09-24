@@ -35,7 +35,7 @@ if __name__=="__main__":
 	log = open(filename + ".txt", 'w')
 	#log2 = open(filename + "2.txt", 'w')
 	
-	m = motetalk.motetalk("xH","n",sport,None)
+	m = motetalk.motetalk(sport=sport,brate=115200)
 	startup(m)
 	
 	sys.stderr.write( "Sniffing...\n")
@@ -73,14 +73,15 @@ if __name__=="__main__":
 	margpkt = inpf.make_array3pkt(0,0,0)
 	j = 0
 	while 1:
+    #limit animation rate to 2000
 		rate (2000)
 		#receive packet
 		(arr, t, crc) = m.nextline(parse)
 		#unpack packet into list
 		arr = map(ord, arr)
-		#check if packet error: checks packet length and crc, hard-coded method
 		if len(arr) > 28:
-			if ((arr[22] * 256 + arr[23]) == (sum(arr) - arr[22] - arr[23] - arr[24] - arr[25] - arr[26] - arr[27] - arr[28])):
+      #check if packet error: checks packet length and crc, hard-coded method. CRC was separated into arr[22] (upper 2 bytes) and arr[23] (lower 2 bytes).
+			if ((arr[22] << 8 + (arr[23]&0xFF)) == sum(arr[:22])):
 				#separates packets into values, puts things into caches/buffers
 				(ax, ay, az, gx, gy, gz, mx, my, mz, temp) = inpf.preparepkt(arr)
 				accel = inpf.pushpkt(inpf.make_array3pkt(ax,ay,az),accel)

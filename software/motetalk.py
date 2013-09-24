@@ -49,7 +49,7 @@ def packetify(arr):
   arr = flatten(arr)
   l = [len(arr)]
   l.extend(arr)
-  l.append((~sum(arr)) & 0xff)
+  l.append((~sum(arr)) & 0xff) #CRC
   return l
 
 def flatten(l):
@@ -90,9 +90,9 @@ class motetalk:
   def __repr__(self): 
     return repr(self.ts) + " " + " ".join(map(str, self.arr))
 	
-  def __init__(self, fmtstring="xH", head="n", sport="COM5", timeout=None):
+  def __init__(self, fmtstring="xH", head="n", sport="COM5", timeout=None, brate=921600):
     try:
-      self.ser = serial.Serial(sport, baudrate=921600, timeout=timeout)   #sets COM No. and Baudrate
+      self.ser = serial.Serial(sport, baudrate=brate, timeout=timeout)   #sets COM No. and Baudrate
     except serial.serialutil.SerialException:
       print "No mote connected."
     else:
