@@ -1,0 +1,2 @@
+Linker is using absolute path with \cc2540\ti_51ew_cc2540b.xcl
+Look at the attHandleValueNoti_t and change the value to ATT_MAX_MTU_SIZE if needed.

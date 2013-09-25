@@ -1,0 +1,9 @@
+IAR projects may NOT work because of file paths.
+
+Solution:
+
+  1. Re-add all the files .c and .h files that are in the project.
+
+  2. Reconfigure the linker with the correct file path to ti_51ew_cc2540b.xcl.
+  It should be in a directory like common/cc2540, but do a recursive search for
+  file name to make sure.
