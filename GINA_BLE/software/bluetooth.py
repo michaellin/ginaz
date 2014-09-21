@@ -1,4 +1,4 @@
-import serial,struct
+import serial,struct,os,time
 
 def initserial():
   bt = serial.Serial()
@@ -67,7 +67,7 @@ def device_discovery(bt):
   
   return numdev[0], addr
   
-def link(bt, address)
+def link(bt, address):
   #Start the Link
   lincom = '\x01' #command
   lincom = lincom + '\x09\xFE' #GAP_EstablishLinkRequest
