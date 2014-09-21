@@ -13,7 +13,7 @@ ble.set_connection_interval(bt)
 j=0
 while (j != numdev):
   j = j+1
-  ble.link(bt, addresses[j]
+  ble.link(bt, addresses[j])
 
 while (bt.isOpen()):
   (xacc, yacc, zacc, xgyr, ygyr, zgyr, xmag, ymag, zmag, temperature) = ble.read_packet(bt)
